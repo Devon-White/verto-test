@@ -52,6 +52,7 @@ Browser (index.html)  <-->  Express Server (server.js)  <-->  SignalWire API
    | `SIGNALWIRE_API_TOKEN` | Your API token from the SignalWire dashboard |
    | `SIGNALWIRE_SPACE` | Your space name (e.g. `example` from `example.signalwire.com`) |
    | `PUBLIC_URL` | A publicly accessible URL pointing to this server (for the cXML webhook) |
+   | `SIGNALWIRE_FROM_NUMBER` | The caller ID number for test inbound calls (e.g. `+15551234567`) |
 
 3. **Expose your server publicly** (required for Test Receiving Call)
 

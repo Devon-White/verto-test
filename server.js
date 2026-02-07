@@ -5,9 +5,9 @@ const path = require("path");
 const app = express();
 const PORT = 9898;
 
-const { SIGNALWIRE_PROJECT_ID, SIGNALWIRE_API_TOKEN, SIGNALWIRE_SPACE, PUBLIC_URL } = process.env;
+const { SIGNALWIRE_PROJECT_ID, SIGNALWIRE_API_TOKEN, SIGNALWIRE_SPACE, PUBLIC_URL, SIGNALWIRE_FROM_NUMBER } = process.env;
 
-if (!SIGNALWIRE_PROJECT_ID || !SIGNALWIRE_API_TOKEN || !SIGNALWIRE_SPACE || !PUBLIC_URL) {
+if (!SIGNALWIRE_PROJECT_ID || !SIGNALWIRE_API_TOKEN || !SIGNALWIRE_SPACE || !PUBLIC_URL || !SIGNALWIRE_FROM_NUMBER) {
   console.error("Missing required env vars. Copy .env.example to .env and fill in your credentials.");
   process.exit(1);
 }
@@ -69,7 +69,7 @@ app.post("/api/test-call", async (req, res) => {
       },
       body: new URLSearchParams({
         To: `verto:${resource}@${SIGNALWIRE_SPACE}.verto.signalwire.com`,
-        From: "+10000000000",
+        From: SIGNALWIRE_FROM_NUMBER,
         Url: `${PUBLIC_URL}/api/cxml`,
       }),
     });
